@@ -1,0 +1,10 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+libdir=@LIB_INSTALL_DIR@
+includedir=@CMAKE_INSTALL_PREFIX@/include
+
+Name: urfkill-qt
+Description: urfkill is a system daemon for managing killswitches
+Version: @VERSION@
+
+Libs: -L${libdir} -lurfkill-qt
+Cflags: -I${includedir}/liburfkill-qt

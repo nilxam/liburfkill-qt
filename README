@@ -1,0 +1,7 @@
+URfkill[1] is a project to handle rfkill events in userspace and aimed to replace the rfkill input handler in kernel. 
+liburfkill-qt[2] is Qt binding of URfkill, it provides Qt API to control URfkill. liburfkill-qt follows URfkill version policy.
+
+
+
+[1] https://github.com/lcp/urfkill
+[2] https://github.com/nilxam/liburfkill-qt
