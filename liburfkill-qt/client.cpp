@@ -1,12 +1,27 @@
 #include <QtDBus>
 #include <QDebug>
 #include <QDBusReply>
+#include <QDBusVariant>
 
 #include "client.h"
 #include "killswitch.h"
 #include "device.h"
 #include "urfkill.h"
 #include "enum.h"
+
+void Client::daemonLaunch()
+{
+    QDBusConnection conn = QDBusConnection::systemBus();
+    if (!QDBusConnection::systemBus().isConnected()) {
+        qDebug() << "Cannot connect to the D-Bus system bus.";
+
+        return;
+    }   
+
+    QDBusInterface launchIface(URFKILL_SERVICE, URFKILL_OBJPATH, DBUS_PROPERTIES, conn);
+    QDBusReply<QDBusVariant> rep = launchIface.call("Get", "org.freedesktop.URfkill", "DaemonVersion");
+    //qDebug() << rep.value().variant().toString();
+}
 
 bool Client::isUrfkillRunning()
 {
@@ -17,7 +32,7 @@ bool Client::isUrfkillRunning()
         return false;
     }   
 
-    QDBusInterface checkIface(DBUS_SERVICE, DBUS_OBJPATH, DBUS_INTERFACE, conn, this);
+    QDBusInterface checkIface(DBUS_SERVICE, DBUS_OBJPATH, DBUS_INTERFACE, conn);
     if (!checkIface.isValid()) {
         qDebug() << "Can not create DBus interface!";
         qDebug() << QDBusConnection::systemBus().lastError().message();
@@ -93,13 +108,8 @@ void Client::refreshDevicesData()
 }
 
 Client::Client() 
-    : m_keyControl(false), m_daemonVersion(""), m_devicesList(), m_urfkillRunning(true)
+    : m_keyControl(false), m_daemonVersion(""), m_devicesList()
 {
-    if (!isUrfkillRunning()){
-        m_urfkillRunning = false;
-        return;
-    }
-
     QDBusConnection conn = QDBusConnection::systemBus();
     if (!QDBusConnection::systemBus().isConnected()) {
         qDebug() << "Cannot connect to the D-Bus system bus.";
@@ -147,9 +157,4 @@ bool Client::keyControl() const
 QString Client::daemonVersion() const
 {
     return m_daemonVersion;
-}
-
-bool Client::urfkillRunning() const
-{
-    return m_urfkillRunning;
 }

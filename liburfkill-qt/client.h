@@ -15,6 +15,8 @@ public:
 
     bool setBlock(uint type, bool block);
     bool setBlockIdx(uint index, bool block);
+    static bool isUrfkillRunning();
+    static void daemonLaunch();
 
     QList<QDBusObjectPath> enumerateDevices() const;
     bool keyControl() const;
@@ -29,11 +31,9 @@ protected:
     QDBusInterface *clientIface;
 private:
     void refreshDevicesData();
-    bool isUrfkillRunning();
 
     bool m_keyControl;
     QString m_daemonVersion;
-    bool m_urfkillRunning;
     QList<QDBusObjectPath> m_devicesList;
 private slots:
     void gotDeviceAdded(QString device);

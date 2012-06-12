@@ -14,12 +14,16 @@ int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
 
-    Client *client = new Client;
-    if (!client->urfkillRunning()){
+    if (!Client::isUrfkillRunning()){
         qDebug() << "URfkill Daemon not running!";
+
+        qDebug() << "Try to start URfkill daemon...";
+        Client::daemonLaunch();
+        qDebug() << "Please re-launch program!";
         exit(1);
     }
 
+    Client *client = new Client;
     Killswitch *ks = new Killswitch(URF_ENUM_TYPE_BLUETOOTH);
     Test *test = new Test;
     QObject::connect(ks, SIGNAL(triggerStateChanged()), test, SLOT(gotKillswitchChanged()));
