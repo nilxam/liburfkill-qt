@@ -1,6 +1,18 @@
 URfkill[1] is a project to handle rfkill events in userspace and aimed to replace the rfkill input handler in kernel. 
 liburfkill-qt[2] is Qt binding of URfkill, it provides Qt API to control URfkill. liburfkill-qt follows URfkill version policy.
 
+=== Build Instruction ===
+mkdir build
+cmake ..
+make
+make install
+
+=== Uninstall Instruction ===
+make uninstall
+
+=== More Specific Instruction for 64bit machine ===
+cmake -DCMAKE_INSTALL_PREFIX=/usr -DLIB_SUFFIX=64 ..
+
 
 
 [1] https://github.com/lcp/urfkill
