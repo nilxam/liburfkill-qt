@@ -6,5 +6,6 @@ Name: urfkill-qt
 Description: urfkill is a system daemon for managing killswitches
 Version: @VERSION@
 
+Requires: QtCore QtDBus
 Libs: -L${libdir} -lurfkill-qt
 Cflags: -I${includedir}/liburfkill-qt
