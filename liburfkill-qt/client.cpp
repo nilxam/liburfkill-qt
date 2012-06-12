@@ -4,8 +4,6 @@
 #include <QDBusVariant>
 
 #include "client.h"
-#include "killswitch.h"
-#include "device.h"
 #include "urfkill.h"
 #include "enum.h"
 
