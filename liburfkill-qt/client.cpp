@@ -37,6 +37,7 @@ void Client::daemonLaunch()
     }   
 
     QDBusInterface launchIface(URFKILL_SERVICE, URFKILL_OBJPATH, DBUS_PROPERTIES, conn);
+    /* Just simple call DaemonVersion then URfkill should be launch if it was registered */
     QDBusReply<QDBusVariant> rep = launchIface.call("Get", "org.freedesktop.URfkill", "DaemonVersion");
     //qDebug() << rep.value().variant().toString();
 }
