@@ -1,5 +1,5 @@
 URfkill[1] is a project to handle rfkill events in userspace and aimed to replace the rfkill input handler in kernel. 
-liburfkill-qt[2] is Qt binding of URfkill, it provides Qt API to control URfkill. liburfkill-qt follows URfkill version naming rule.
+liburfkill-qt[2] is a C++ Qt binding of URfkill library, it provides Qt interface to control URfkill. liburfkill-qt follows URfkill version naming rule.
 
 === Build Instruction ===
 mkdir build
