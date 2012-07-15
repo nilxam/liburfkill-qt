@@ -34,7 +34,7 @@ void Client::daemonLaunch()
         qDebug() << "Cannot connect to the D-Bus system bus.";
 
         return;
-    }   
+    }
 
     QDBusInterface launchIface(URFKILL_SERVICE, URFKILL_OBJPATH, DBUS_PROPERTIES, conn);
     /* Just simple call DaemonVersion then URfkill should be launch if it was registered */
@@ -49,7 +49,7 @@ bool Client::isUrfkillRunning()
         qDebug() << "Cannot connect to the D-Bus system bus.";
 
         return false;
-    }   
+    }
 
     QDBusInterface checkIface(DBUS_SERVICE, DBUS_OBJPATH, DBUS_INTERFACE, conn);
     if (!checkIface.isValid()) {
@@ -96,7 +96,7 @@ bool Client::setBlock(uint type, bool block)
     QDBusReply<bool> reply = clientIface->call("Block", type, block);
 
     if (reply.isValid()) {
-        return true;    
+        return true;
     } else {
         qDebug() << QString("D-Bus error: Call Block() failed!");
         return false;
@@ -108,7 +108,7 @@ bool Client::setBlockIdx(uint index, bool block)
     QDBusReply<bool> reply = clientIface->call("BlockIdx", index, block);
 
     if (reply.isValid()) {
-        return true;    
+        return true;
     } else {
         qDebug() << QString("D-Bus error: Call BlockIdx() failed!");
         return false;
@@ -134,7 +134,7 @@ Client::Client()
         qDebug() << "Cannot connect to the D-Bus system bus.";
 
         return;
-    }   
+    }
 
     clientIface = new QDBusInterface(URFKILL_SERVICE, URFKILL_OBJPATH, URFKILL_INTERFACE, conn, this);
     if (!clientIface->isValid()) {

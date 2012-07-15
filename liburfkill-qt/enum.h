@@ -16,15 +16,15 @@
  * The type of the rfkill device following the definition in &lt;linux/rfkill.h&gt;
  */
 typedef enum {
-	URF_ENUM_TYPE_ALL = 0,
-	URF_ENUM_TYPE_WLAN,
-	URF_ENUM_TYPE_BLUETOOTH,
-	URF_ENUM_TYPE_UWB,
-	URF_ENUM_TYPE_WIMAX,
-	URF_ENUM_TYPE_WWAN,
-	URF_ENUM_TYPE_GPS,
-	URF_ENUM_TYPE_FM,
-	URF_ENUM_TYPE_NUM,
+    URF_ENUM_TYPE_ALL = 0,
+    URF_ENUM_TYPE_WLAN,
+    URF_ENUM_TYPE_BLUETOOTH,
+    URF_ENUM_TYPE_UWB,
+    URF_ENUM_TYPE_WIMAX,
+    URF_ENUM_TYPE_WWAN,
+    URF_ENUM_TYPE_GPS,
+    URF_ENUM_TYPE_FM,
+    URF_ENUM_TYPE_NUM,
 } UrfEnumType;
 
 /**
@@ -37,10 +37,10 @@ typedef enum {
  * The state of the switch
  */
 typedef enum {
-	URF_ENUM_STATE_NO_ADAPTER = -1,
-	URF_ENUM_STATE_UNBLOCKED = 0,
-	URF_ENUM_STATE_SOFT_BLOCKED,
-	URF_ENUM_STATE_HARD_BLOCKED,
+    URF_ENUM_STATE_NO_ADAPTER = -1,
+    URF_ENUM_STATE_UNBLOCKED = 0,
+    URF_ENUM_STATE_SOFT_BLOCKED,
+    URF_ENUM_STATE_HARD_BLOCKED,
 } UrfEnumState;
 
 #endif
